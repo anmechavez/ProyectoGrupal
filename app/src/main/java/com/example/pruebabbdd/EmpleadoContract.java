@@ -11,5 +11,6 @@ public final class EmpleadoContract {
         public static final String COLUMN_NOMBRE = "nombre";
         public static final String COLUMN_APELLIDO = "apellido";
         public static final String COLUMN_PUESTO = "puesto";
+        public static final String COLUMN_DNI = "dni";
     }
 }

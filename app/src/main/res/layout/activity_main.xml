@@ -14,17 +14,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.351" />
+        app:layout_constraintTop_toBottomOf="@+id/puestoEditText"
+        app:layout_constraintVertical_bias="0.087" />
 
     <EditText
-        android:id="@+id/apellidoEditText"
+        android:id="@+id/dniEditText"
         android:layout_width="377dp"
         android:layout_height="42dp"
-        android:layout_marginBottom="588dp"
+        android:layout_marginBottom="532dp"
+        android:hint="DNI"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/actualizarEmpleadoButton" />
 
@@ -32,25 +33,38 @@
         android:id="@+id/nombreEditText"
         android:layout_width="377dp"
         android:layout_height="42dp"
-        android:layout_marginBottom="440dp"
+        android:layout_marginBottom="496dp"
+        android:hint="Nombre"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/puestoEditText"
-        app:layout_constraintVertical_bias="0.175" />
+        app:layout_constraintTop_toBottomOf="@+id/dniEditText" />
 
     <EditText
         android:id="@+id/puestoEditText"
         android:layout_width="377dp"
         android:layout_height="42dp"
-        android:layout_marginBottom="500dp"
+        android:layout_marginBottom="356dp"
+        android:hint="Puesto de trabajo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.441"
+        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/apellidoEditText"
-        app:layout_constraintVertical_bias="0.086" />
+        app:layout_constraintVertical_bias="0.425" />
+
+    <EditText
+        android:id="@+id/apellidoEditText"
+        android:layout_width="377dp"
+        android:layout_height="42dp"
+        android:layout_marginBottom="420dp"
+        android:hint="Apellidos"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nombreEditText" />
 
     <Button
         android:id="@+id/actualizarEmpleadoButton"

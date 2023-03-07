@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private Button agregarEmpleadoButton;
     private Button actualizarEmpleadoButton;
     private Button eliminarEmpleadoButton;
+    private EditText dniEditText;
 
     private SQLiteDatabase db;
     private MiDBHelper dbHelper;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        dniEditText = findViewById(R.id.dniEditText);
         nombreEditText = findViewById(R.id.nombreEditText);
         apellidoEditText = findViewById(R.id.apellidoEditText);
         puestoEditText = findViewById(R.id.puestoEditText);
@@ -66,11 +68,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void agregarEmpleado() {
+        String dni = dniEditText.getText().toString();
         String nombre = nombreEditText.getText().toString();
         String apellido = apellidoEditText.getText().toString();
         String puesto = puestoEditText.getText().toString();
 
         ContentValues values = new ContentValues();
+        values.put(EmpleadoContract.EmpleadoEntry.COLUMN_DNI, dni);
         values.put(EmpleadoContract.EmpleadoEntry.COLUMN_NOMBRE, nombre);
         values.put(EmpleadoContract.EmpleadoEntry.COLUMN_APELLIDO, apellido);
         values.put(EmpleadoContract.EmpleadoEntry.COLUMN_PUESTO, puesto);
@@ -83,20 +87,24 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Empleado agregado con ID " + newRowId, Toast.LENGTH_SHORT).show();
             mostrarEmpleados();
         }
+
+        resetData();
     }
 
     private void actualizarEmpleado() {
+        String dni = dniEditText.getText().toString();
         String nombre = nombreEditText.getText().toString();
         String apellido = apellidoEditText.getText().toString();
         String puesto = puestoEditText.getText().toString();
 
         ContentValues values = new ContentValues();
+        values.put(EmpleadoContract.EmpleadoEntry.COLUMN_DNI, dni);
         values.put(EmpleadoContract.EmpleadoEntry.COLUMN_NOMBRE, nombre);
         values.put(EmpleadoContract.EmpleadoEntry.COLUMN_APELLIDO, apellido);
         values.put(EmpleadoContract.EmpleadoEntry.COLUMN_PUESTO, puesto);
 
-        String selection = EmpleadoContract.EmpleadoEntry.COLUMN_NOMBRE + " LIKE ?";
-        String[] selectionArgs = { nombre };
+        String selection = EmpleadoContract.EmpleadoEntry.COLUMN_DNI + " LIKE ?";
+        String[] selectionArgs = { dni };
 
         int count = db.update(
                 EmpleadoContract.EmpleadoEntry.TABLE_NAME,
@@ -110,6 +118,8 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Empleado actualizado", Toast.LENGTH_SHORT).show();
             mostrarEmpleados();
         }
+
+        resetData();
     }
 
     private void eliminarEmpleado() {
@@ -126,6 +136,8 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Empleado eliminado", Toast.LENGTH_SHORT).show();
             mostrarEmpleados();
         }
+
+        resetData();
     }
 
     private void mostrarEmpleados() {
@@ -144,10 +156,18 @@ public class MainActivity extends AppCompatActivity {
             String nombre = cursor.getString(cursor.getColumnIndex(EmpleadoContract.EmpleadoEntry.COLUMN_NOMBRE));
             String apellido = cursor.getString(cursor.getColumnIndex(EmpleadoContract.EmpleadoEntry.COLUMN_APELLIDO));
             String puesto = cursor.getString(cursor.getColumnIndex(EmpleadoContract.EmpleadoEntry.COLUMN_PUESTO));
-            builder.append(nombre).append(" ").append(apellido).append(", ").append(puesto).append("\n");
+            String dni = cursor.getString(cursor.getColumnIndex(EmpleadoContract.EmpleadoEntry.COLUMN_DNI));
+            builder.append(nombre).append(" ").append(apellido).append(", ").append(puesto).append(", ").append(dni).append("\n");
         }
 
         empleadosTextView.setText(builder.toString());
+    }
+
+    private void resetData() {
+        dniEditText.setText("");
+        nombreEditText.setText("");
+        apellidoEditText.setText("");
+        puestoEditText.setText("");
     }
 
     @Override
