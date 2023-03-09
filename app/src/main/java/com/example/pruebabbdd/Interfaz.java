@@ -30,6 +30,8 @@ public class Interfaz extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_interfaz);
+
+        getSupportActionBar().setTitle("Interfaz de acciones");
         dniEditText = findViewById(R.id.dniEditText);
         nombreEditText = findViewById(R.id.nombreEditText);
         apellidoEditText = findViewById(R.id.apellidoEditText);
