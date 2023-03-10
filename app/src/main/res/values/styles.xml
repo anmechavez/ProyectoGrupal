@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="tablablanca">
+        <item name="android:background">#FFFFFF</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:divider">#FFFFFF</item>
+        <item name="android:showDividers">middle</item>
+    </style>
+</resources>

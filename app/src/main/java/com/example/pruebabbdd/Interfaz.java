@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,7 +19,7 @@ public class Interfaz extends AppCompatActivity {
     private EditText nombreEditText;
     private EditText apellidoEditText;
     private EditText puestoEditText;
-    private TextView empleadosTextView;
+    private TableLayout empleadosTableLayout;
     private Button agregarEmpleadoButton;
     private Button actualizarEmpleadoButton;
     private Button eliminarEmpleadoButton;
@@ -36,7 +38,7 @@ public class Interfaz extends AppCompatActivity {
         nombreEditText = findViewById(R.id.nombreEditText);
         apellidoEditText = findViewById(R.id.apellidoEditText);
         puestoEditText = findViewById(R.id.puestoEditText);
-        empleadosTextView = findViewById(R.id.empleadosTextView);
+        empleadosTableLayout = findViewById(R.id.tableLayout);
         agregarEmpleadoButton = findViewById(R.id.agregarEmpleadoButton);
         actualizarEmpleadoButton = findViewById(R.id.actualizarEmpleadoButton);
         eliminarEmpleadoButton = findViewById(R.id.eliminarEmpleadoButton);
@@ -149,7 +151,7 @@ public class Interfaz extends AppCompatActivity {
         resetData();
     }
 
-    private void mostrarEmpleados() {
+    private void mostrarEmpleados() { // Obtener los datos de los empleados de la base de datos
         Cursor cursor = db.query(
                 EmpleadoContract.EmpleadoEntry.TABLE_NAME,
                 null,
@@ -160,16 +162,51 @@ public class Interfaz extends AppCompatActivity {
                 null
         );
 
-        StringBuilder builder = new StringBuilder();
+        // Obtener el TableLayout del diseño
+        TableLayout tableLayout = findViewById(R.id.tableLayout);
+
+        // Eliminar todas las filas existentes en la tabla
+        tableLayout.removeAllViews();
+
+        // Crear una nueva fila de tabla para cada empleado
         while (cursor.moveToNext()) {
+            String dni = cursor.getString(cursor.getColumnIndex(EmpleadoContract.EmpleadoEntry.COLUMN_DNI));
             String nombre = cursor.getString(cursor.getColumnIndex(EmpleadoContract.EmpleadoEntry.COLUMN_NOMBRE));
             String apellido = cursor.getString(cursor.getColumnIndex(EmpleadoContract.EmpleadoEntry.COLUMN_APELLIDO));
             String puesto = cursor.getString(cursor.getColumnIndex(EmpleadoContract.EmpleadoEntry.COLUMN_PUESTO));
-            String dni = cursor.getString(cursor.getColumnIndex(EmpleadoContract.EmpleadoEntry.COLUMN_DNI));
-            builder.append(nombre).append(" ").append(apellido).append(", ").append(puesto).append(", ").append(dni).append("\n");
+
+            TableRow tableRow = new TableRow(this);
+            tableRow.setLayoutParams(new TableLayout.LayoutParams(
+                    TableLayout.LayoutParams.MATCH_PARENT,
+                    TableLayout.LayoutParams.WRAP_CONTENT
+            ));
+
+            // Agregar las celdas correspondientes a la fila
+            TextView dniTextView = new TextView(this);
+            dniTextView.setText(dni);
+            dniTextView.setPadding(5, 5, 5, 5);
+            tableRow.addView(dniTextView);
+
+            TextView nombreTextView = new TextView(this);
+            nombreTextView.setText(nombre);
+            nombreTextView.setPadding(5, 5, 5, 5);
+            tableRow.addView(nombreTextView);
+
+            TextView apellidoTextView = new TextView(this);
+            apellidoTextView.setText(apellido);
+            apellidoTextView.setPadding(5, 5, 5, 5);
+            tableRow.addView(apellidoTextView);
+
+            TextView puestoTextView = new TextView(this);
+            puestoTextView.setText(puesto);
+            puestoTextView.setPadding(5, 5, 5, 5);
+            tableRow.addView(puestoTextView);
+
+            // Agregar la fila a la tabla
+            tableLayout.addView(tableRow);
         }
 
-        empleadosTextView.setText(builder.toString());
+        cursor.close();
     }
 
     private void resetData() {
