@@ -4,101 +4,125 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Interfaz">
+    tools:context=".Interfaz"
+    android:background="#121212"
+    >
+
 
     <TextView
         android:id="@+id/empleadosTextView"
+        android:textColor="#FFFFFF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="220dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/puestoEditText"
-        app:layout_constraintVertical_bias="0.087" />
+        app:layout_constraintTop_toBottomOf="@+id/tituloListEmp"
+        app:layout_constraintVertical_bias="0.181" />
 
-    <EditText
-        android:id="@+id/dniEditText"
+    <TextView
+        android:id="@+id/tituloListEmp"
+        android:textColor="#FFFFFF"
+        android:layout_width="262dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="28dp"
+        android:text="LISTA DE EMPLEADOS"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:textColor="#FFFFFF"
         android:layout_width="377dp"
-        android:layout_height="42dp"
-        android:layout_marginBottom="532dp"
-        android:hint="DNI"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="172dp"
+        android:layout_marginTop="44dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintHorizontal_bias="0.558"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/actualizarEmpleadoButton" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/nombreEditText"
-        android:layout_width="377dp"
-        android:layout_height="42dp"
-        android:layout_marginBottom="496dp"
-        android:hint="Nombre"
-        app:layout_constraintBottom_toBottomOf="parent"
+        <EditText
+            android:id="@+id/dniEditText"
+            android:textColor="#FFFFFF"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@android:color/white"
+            android:layout_width="377dp"
+            android:layout_height="42dp"
+            android:hint="DNI" />
+
+        <EditText
+            android:id="@+id/nombreEditText"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@android:color/white"
+            android:textColor="#FFFFFF"
+            android:layout_width="377dp"
+            android:layout_height="42dp"
+            android:hint="Nombre" />
+
+        <EditText
+            android:id="@+id/apellidoEditText"
+            android:textColorHint="@color/white"
+            android:textColor="#FFFFFF"
+            android:layout_width="377dp"
+            android:layout_height="42dp"
+            android:hint="Apellidos"
+            android:backgroundTint="@android:color/white"
+            />
+
+
+        <EditText
+            android:id="@+id/puestoEditText"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@android:color/white"
+            android:textColor="#FFFFFF"
+            android:layout_width="377dp"
+            android:layout_height="42dp"
+            android:hint="Puesto de trabajo" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:textColor="#FFFFFF"
+        android:layout_width="347dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="32dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dniEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-    <EditText
-        android:id="@+id/puestoEditText"
-        android:layout_width="377dp"
-        android:layout_height="42dp"
-        android:layout_marginBottom="356dp"
-        android:hint="Puesto de trabajo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/apellidoEditText"
-        app:layout_constraintVertical_bias="0.425" />
+        <Button
+            android:id="@+id/agregarEmpleadoButton"
+            android:textColor="#FFFFFF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="Añadir" />
+        />
 
-    <EditText
-        android:id="@+id/apellidoEditText"
-        android:layout_width="377dp"
-        android:layout_height="42dp"
-        android:layout_marginBottom="420dp"
-        android:hint="Apellidos"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nombreEditText" />
+        <Button
+            android:id="@+id/actualizarEmpleadoButton"
+            android:textColor="#FFFFFF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="Modificar" />
 
-    <Button
-        android:id="@+id/actualizarEmpleadoButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Modificar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.042" />
+        <Button
+            android:id="@+id/eliminarEmpleadoButton"
+            android:textColor="#FFFFFF"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="Eliminar" /><![CDATA[
+            />
 
-    <Button
-        android:id="@+id/agregarEmpleadoButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Añadir"
-        app:layout_constraintBottom_toBottomOf="@+id/actualizarEmpleadoButton"
-        app:layout_constraintEnd_toStartOf="@+id/actualizarEmpleadoButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/actualizarEmpleadoButton"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/eliminarEmpleadoButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Eliminar"
-        app:layout_constraintBottom_toBottomOf="@+id/actualizarEmpleadoButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toEndOf="@+id/actualizarEmpleadoButton"
-        app:layout_constraintTop_toTopOf="@+id/actualizarEmpleadoButton"
-        app:layout_constraintVertical_bias="0.0" />
+        ]]>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

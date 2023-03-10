@@ -124,10 +124,10 @@ public class Interfaz extends AppCompatActivity {
     }
 
     private void eliminarEmpleado() {
-        String nombre = nombreEditText.getText().toString();
+        String dni = dniEditText.getText().toString();
 
-        String selection = EmpleadoContract.EmpleadoEntry.COLUMN_NOMBRE + " LIKE ?";
-        String[] selectionArgs = { nombre };
+        String selection = EmpleadoContract.EmpleadoEntry.COLUMN_DNI + " LIKE ?";
+        String[] selectionArgs = { dni };
 
         int deletedRows = db.delete(EmpleadoContract.EmpleadoEntry.TABLE_NAME, selection, selectionArgs);
 
