@@ -74,6 +74,14 @@ public class Interfaz extends AppCompatActivity {
         String apellido = apellidoEditText.getText().toString();
         String puesto = puestoEditText.getText().toString();
 
+        if(dni.equals("")||nombre.equals("")||apellido.equals("")||puesto.equals("")){
+            Toast.makeText(this, "Todos los campos deben ser cumplimentados para poder añadir", Toast.LENGTH_LONG).show();
+            return;
+        }else if(!dni.matches("\\d{8}[A-Z]")){
+            Toast.makeText(this, "El formato del DNI es incorrecto", Toast.LENGTH_LONG).show();
+            return;
+        }
+
         ContentValues values = new ContentValues();
         values.put(EmpleadoContract.EmpleadoEntry.COLUMN_DNI, dni);
         values.put(EmpleadoContract.EmpleadoEntry.COLUMN_NOMBRE, nombre);
